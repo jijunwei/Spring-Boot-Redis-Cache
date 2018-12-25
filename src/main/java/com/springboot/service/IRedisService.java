@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Administrator on 2017/3/1 14:57.
+ *  Administrator on 2017/3/1 14:57.
  */
 public abstract class IRedisService<T> {
     @Autowired

@@ -1,7 +1,43 @@
 server:
   context-path: /web
   port: 8089
+#vue静态资源
+vus.static.resources: /app/test/service/
+#首页图片静态资源配置
+app_home_picture_file_path: ${vus.static.resources}/pictureTest/
+# redisson
+redisson:
+   address: redis://localhost:6380
+   password: foobared
+# jwt config
+jwt:
+   secret: 61D73234C4F93E03074D74D74D1E39D9
+   expire: 2592000
+ #rabbitmq配置
+rabbitmq:
+   connection:
+     host: 127.0.0.1
+     port: 15672
+     user: guest
+     password: guest
+     virtual-host: /
+   exchange: amq.topic
+   queue:
+     var1: cards
+     var2: timebank
+
+
+#哨兵模式
+   master-name: mymaster
+#redisson.password=
+#redisson.sentinel-addresses=10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
 spring:
+#mongodb note:mongo3.x will not use host and port,only use uri
+
+  data.mongodb.uri: mongodb://localhost:27017/test
+#elasticsearch 配置
+#spring.data.elasticsearch.repositories.enabled = true
+#spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300
   datasource:
     druid:
       # 数据库访问配置, 使用druid数据源
@@ -24,6 +60,7 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
+      log-slow-sql: true
       # 打开PSCache，并且指定每个连接上PSCache的大小
       pool-prepared-statements: true
       max-open-prepared-statements: 20
@@ -78,6 +115,7 @@ spring:
 
 
     password: foobared
+    defaultExpiration: 5000
     master.name: mymaster
     sentinel1:
       host: localhost
@@ -122,3 +160,11 @@ myProps: #自定义的属性和值
   mapProps:
     key1: value1
     key2: value2
+# mybatis 配置
+mybatis:
+   config-locations: mybatis/mybatis-config.xml
+   mapper-locations: mybatis/mapping/*.xml
+   type-aliases-package: com.springboot.model
+security:
+   allowedRoutes: /**
+   allowedHeaders: Origin, No-Cache, x-auth-token, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type,Authorization

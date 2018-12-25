@@ -1,4 +1,4 @@
-package com.springboot.service;
+package com.springboot.service.provider;
 
 
 import java.sql.Driver;

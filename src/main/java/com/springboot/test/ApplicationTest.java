@@ -1,7 +1,8 @@
-package com.springboot;
+package com.springboot.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.Application;
 import com.springboot.bean.MyProps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
