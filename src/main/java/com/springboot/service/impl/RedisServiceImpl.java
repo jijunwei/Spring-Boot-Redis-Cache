@@ -1,7 +1,7 @@
 package com.springboot.service.impl;
 
 
-import com.springboot.mapper.model.RedisModel;
+import com.springboot.model.RedisModel;
 import com.springboot.service.IRedisService;
 import org.springframework.stereotype.Service;
 

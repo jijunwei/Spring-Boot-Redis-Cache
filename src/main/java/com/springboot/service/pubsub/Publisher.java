@@ -1,4 +1,4 @@
-package com.springboot.service;
+package com.springboot.service.pubsub;
 
 import java.io.BufferedReader;
 import java.io.IOException;

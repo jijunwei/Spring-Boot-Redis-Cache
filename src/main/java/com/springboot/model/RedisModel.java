@@ -1,10 +1,10 @@
-package com.springboot.mapper.model;
+package com.springboot.model;
 
 
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2017/3/1 14:55.
+ *  Administrator on 2017/3/1 14:55.
  */
 public class RedisModel implements Serializable {
     private String redisKey;//redis中的key

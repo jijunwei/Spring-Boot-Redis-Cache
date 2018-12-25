@@ -1,9 +1,12 @@
 package com.springboot.controller;
 
 
-import com.springboot.bean.Student;
-import com.springboot.config.RedisConfig;
+import com.springboot.config.redis.RedisConfig;
 import com.springboot.service.*;
+import com.springboot.service.provider.MyListener;
+import com.springboot.service.pubsub.Publisher;
+import com.springboot.service.pubsub.SubThread;
+import com.springboot.service.pubsub.Subscriber;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -76,6 +79,7 @@ public class RedisController {
 
 
     }
+
     @RequestMapping( value = "/subscribe", method = RequestMethod.POST)
     public String subscribeOps(){
         JedisPool JEDIS_POOL=redisConfig.redisPoolFactory();
@@ -86,6 +90,7 @@ public class RedisController {
         Subscriber subscriber = new Subscriber();
         //订阅线程：接收消息
         new Thread(new Runnable() {
+            @Override
             public void run() {
                 try {
                     LOGGER.info("Subscribing to "+CHANNEL_NAME+". This thread will be blocked.");
@@ -111,20 +116,6 @@ public class RedisController {
 
 
 
-    @RequestMapping("/testProvider")
-    @ResponseBody
-    public String testProvider() {
-        System.out.println("我要发送消息咯...");
-        template.convertAndSend("msg", "欢迎使用redis的消息队列!");
-        try {
-            //发送消息连接等待中
-            System.out.println("消息正在发送...");
-            latch.await();
-        } catch (InterruptedException e) {
-            System.out.println("消息发送失败...");
-        }
-        return null;
-    }
 
 
 

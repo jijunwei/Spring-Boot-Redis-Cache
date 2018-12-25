@@ -1,4 +1,4 @@
-package com.springboot.service;
+package com.springboot.service.pubsub;
 
 import org.apache.log4j.Logger;
 import redis.clients.jedis.JedisPubSub;

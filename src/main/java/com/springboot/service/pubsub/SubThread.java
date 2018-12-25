@@ -1,5 +1,6 @@
-package com.springboot.service;
+package com.springboot.service.pubsub;
 
+import com.springboot.service.pubsub.Subscriber;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
