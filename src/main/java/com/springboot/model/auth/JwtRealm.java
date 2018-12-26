@@ -1,3 +1,4 @@
+/*
 package com.springboot.model.auth;
 
 
@@ -18,6 +19,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+*/
 /**
  * 授权认证，进入此流程的请求说明通过了JwtFilter过滤器登录验证（JwtFilter过滤器的主要作用是区分登录用户和未登录请求）
  * 通过了JwtFilter登录验证后会调用doGetAuthenticationInfo方法进行认证信息的校验，例如token是否合法、是否过期等，
@@ -26,7 +28,8 @@ import java.util.Set;
  *
  * @author skyer
  * @date 2018/8/21 17:59
- */
+ *//*
+
 @Component
 public class JwtRealm extends AuthorizingRealm {
     @Override
@@ -34,10 +37,12 @@ public class JwtRealm extends AuthorizingRealm {
         return token instanceof JwtToken;
     }
 
-    /**
+    */
+/**
      * 授权(验证权限时调用)
      * 方法存在@RequiresRoles、@RequiresPermissions注解会调用该方法进行授权验证
-     */
+     *//*
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -47,9 +52,11 @@ public class JwtRealm extends AuthorizingRealm {
         return info;
     }
 
-    /**
+    */
+/**
      * 认证(登录时调用)
-     */
+     *//*
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String token = (String) authenticationToken.getPrincipal();
@@ -66,3 +73,4 @@ public class JwtRealm extends AuthorizingRealm {
         return info;
     }
 }
+*/

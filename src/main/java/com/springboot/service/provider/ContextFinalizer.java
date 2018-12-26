@@ -14,10 +14,10 @@ import com.mysql.jdbc.AbandonedConnectionCleanupThread;
 
 @WebListener
 public class ContextFinalizer implements ServletContextListener {
-
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
     }
-
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
         Driver d = null;

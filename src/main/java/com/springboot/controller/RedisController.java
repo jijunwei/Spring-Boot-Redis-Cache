@@ -3,7 +3,7 @@ package com.springboot.controller;
 
 import com.springboot.config.redis.RedisConfig;
 import com.springboot.service.*;
-import com.springboot.service.provider.MyListener;
+import com.springboot.service.pubsub.MyListener;
 import com.springboot.service.pubsub.Publisher;
 import com.springboot.service.pubsub.SubThread;
 import com.springboot.service.pubsub.Subscriber;
@@ -56,7 +56,6 @@ public class RedisController {
         final Jedis publisherJedis = JEDIS_POOL.getResource();
         //主线程：发布消息到CHANNEL_NAME频道上
         new Publisher(publisherJedis, CHANNEL_NAME).startPublish(message);
-
 
         new Thread(new Runnable() {
             @Override

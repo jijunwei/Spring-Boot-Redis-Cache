@@ -1,8 +1,14 @@
 package com.springboot.service.socket;
 
 
+import ch.qos.logback.core.joran.spi.XMLUtil;
+import com.springboot.bean.Student;
+import com.springboot.model.route.RouteMsg;
+import com.springboot.service.StudentService;
 import com.springboot.service.hengshui.HSChannelService;
+import com.springboot.service.route.RouteService;
 import com.springboot.util.SpringUtil;
+import com.springboot.util.XmlUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,15 +57,19 @@ public class SocketServer {
                         all = ArrayUtils.addAll(all,ArrayUtils.subarray(buff,0,len));
                     }
                     String reqxml = new String(all, "gbk");
+                    RouteService routeService=SpringUtil.getBean(RouteService.class);
+                    String result=routeService.process(reqxml);
 
-                    HSChannelService hsChannelService = SpringUtil.getBean(HSChannelService.class);
+                    /*HSChannelService hsChannelService = SpringUtil.getBean(HSChannelService.class);
 
-                    String respxml =  hsChannelService.handle(reqxml);
+                    String respxml =  hsChannelService.handle(reqxml);*/
 
                     socket.shutdownInput();//关闭输入流
                     //获取输出流，响应客户端的请求
                     os = socket.getOutputStream();
-                    os.write(respxml.getBytes("gbk"));
+                    //os.write(respxml.getBytes("gbk"));
+
+                    os.write(result.getBytes("gbk"));
                     os.flush();//调用flush()方法将缓冲输出
                 } catch (IOException e) {
                     LOGGER.error("",e);

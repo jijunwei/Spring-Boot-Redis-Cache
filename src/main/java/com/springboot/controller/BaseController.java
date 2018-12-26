@@ -1,7 +1,6 @@
 package com.springboot.controller;
 
-import com.springboot.mapper.UserDao;
-import com.springboot.model.auth.JwtUtil;
+//import com.springboot.model.auth.JwtUtil;
 import com.springboot.model.user.AuthUser;
 import com.springboot.util.BeanValidators;
 import com.springboot.util.RedisUtil;
@@ -26,8 +25,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseController implements IBaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseController.class);
-    @Resource
-    private JwtUtil jwtUtil;
+    /*@Resource
+    private JwtUtil jwtUtil;*/
     @Resource
     private RedisUtil redisUtil;
 
@@ -37,8 +36,8 @@ public class BaseController implements IBaseController {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate redisTemplate;
-    @Autowired
-    private UserDao userDao;
+//    @Autowired
+//    private UserDao userDao;
 
     public AuthUser getCurrentUser() {
         /*String token = getRequest().getHeader("x-auth-token");
@@ -80,7 +79,7 @@ public class BaseController implements IBaseController {
             return Long.valueOf((Integer) obj);
         }
 
-        Claims claims = jwtUtil.parser(oid);
+       /* Claims claims = jwtUtil.parser(oid);
         if (Objects.isNull(claims)) {
             throw new AuthenticationException("认证信息无效，请重新登录");
         }
@@ -95,6 +94,8 @@ public class BaseController implements IBaseController {
         Long operationId = Long.valueOf(subject);
         redisUtil.set(oid, operationId, 1, TimeUnit.HOURS);
         return operationId;
+        */
+       return 1L;
     }
 
 }

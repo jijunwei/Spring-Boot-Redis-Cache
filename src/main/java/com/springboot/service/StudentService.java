@@ -17,4 +17,6 @@ public interface StudentService {
 	
 	@Cacheable(key = "#p0")
 	Student queryStudentBySno(String sno);
+	@Cacheable(key="#p0")
+	int add(Student student);
 }

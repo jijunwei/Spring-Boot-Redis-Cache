@@ -1,3 +1,4 @@
+/*
 package com.springboot.model.auth;
 
 
@@ -12,12 +13,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+*/
 /**
  * Jwt工具
  *
  * @author skyer
  * @date 2018/8/21 16:32
- */
+ *//*
+
 @Component
 public class JwtUtil {
     private Logger logger = LoggerFactory.getLogger(JwtUtil.class);
@@ -27,12 +30,14 @@ public class JwtUtil {
     @Value("${jwt.expire}")
     private Integer expire;
 
-    /**
+    */
+/**
      * 生成jwt token
      *
      * @param userId 用户ID
      * @return token
-     */
+     *//*
+
     public String generateToken(Long userId, String issuer) {
         Date nowDate = new Date();
         return Jwts.builder()
@@ -47,13 +52,15 @@ public class JwtUtil {
                 .compact();
     }
 
-    /**
+    */
+/**
      * 解析 token，
      * 利用 jjwt 提供的parser传入秘钥，
      *
      * @param token token
      * @return 数据声明 Map<String, Object>
-     */
+     *//*
+
     public Claims parser(String token) {
         try {
             return Jwts.parser()
@@ -65,11 +72,13 @@ public class JwtUtil {
         }
     }
 
-    /**
+    */
+/**
      * token是否过期
      *
      * @return true：过期
-     */
+     *//*
+
     public boolean isTokenExpired(Date expiration) {
         return expiration.before(new Date());
     }
@@ -91,3 +100,4 @@ public class JwtUtil {
     }
 
 }
+*/

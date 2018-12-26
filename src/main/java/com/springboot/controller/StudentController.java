@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class TestController {
+public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
@@ -23,6 +23,7 @@ public class TestController {
 	private RedisServiceImpl service;
 	@RequestMapping( value = "/querystudent", method = RequestMethod.GET)
 	public Student queryStudentBySno(String sno) {
+
 		return this.studentService.queryStudentBySno(sno);
 	}
 
@@ -31,7 +32,7 @@ public class TestController {
 	//添加
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	@ResponseBody
-	public void test() {
+	public void testAdd() {
 		System.out.println("start.....");
 		RedisModel m = new RedisModel();
 		m.setName("张三");

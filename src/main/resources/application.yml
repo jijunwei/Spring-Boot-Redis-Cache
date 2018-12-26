@@ -1,6 +1,6 @@
 server:
   context-path: /web
-  port: 8089
+  port: 8090
 #vue静态资源
 vus.static.resources: /app/test/service/
 #首页图片静态资源配置

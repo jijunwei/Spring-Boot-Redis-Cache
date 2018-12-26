@@ -1,33 +1,18 @@
 package com.springboot.service.pay.impl;
 
-import com.springboot.constant.Constants;
 import com.springboot.controller.IBaseController;
-import com.springboot.mapper.UserDao;
-import com.springboot.model.hsbank.HsParam;
-import com.springboot.model.hsbank.req.ReqHead;
-import com.springboot.model.hsbank.resp.RespMsg;
 import com.springboot.model.hssocket.req.Req2004;
-import com.springboot.model.hssocket.req.Req2005;
-import com.springboot.model.hssocket.req.Req2006;
-import com.springboot.model.hssocket.req.Req2007;
 import com.springboot.model.hssocket.resp.*;
-import com.springboot.model.pay.PayStatus;
 import com.springboot.service.hengshui.HSBankService;
 import com.springboot.service.pay.HSBankPayService;
 import com.springboot.util.XmlUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 @Service
 public class HSBankPayServiceImpl implements HSBankPayService, IBaseController {
@@ -37,8 +22,8 @@ public class HSBankPayServiceImpl implements HSBankPayService, IBaseController {
     HSBankService hsBankService;
     @Autowired
     RedisTemplate redisTemplate;
-    @Autowired
-    UserDao userDao;
+    /*@Autowired
+    UserDao userDao;*/
 
 
     @Override

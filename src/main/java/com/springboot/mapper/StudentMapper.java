@@ -1,11 +1,6 @@
 package com.springboot.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.cache.annotation.CacheConfig;
 
 import com.springboot.bean.Student;
@@ -20,6 +15,9 @@ public interface StudentMapper {
 	@Delete("delete from student where sno=#{sno}")
 	void deleteStudentBySno(String sno);
 
+	@Insert("insert into student(sno,sname,ssex) "
+			+ " VALUES(#{sno},#{name},#{sex})")
+    int add(Student student);
 	@Select("select * from student where sno=#{sno}")
 	@Results(id = "student", value = { @Result(property = "sno", column = "sno", javaType = String.class),
 			@Result(property = "name", column = "sname", javaType = String.class),

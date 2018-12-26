@@ -28,5 +28,9 @@ public class StudentServiceImpl implements StudentService{
 	public Student queryStudentBySno(String sno) {
 		return this.studentMapper.queryStudentBySno(sno);
 	}
-
+    @Override
+	public int add(Student student){
+		System.out.print("receive message:"+student.toString());
+		return this.studentMapper.add(student);
+	}
 }

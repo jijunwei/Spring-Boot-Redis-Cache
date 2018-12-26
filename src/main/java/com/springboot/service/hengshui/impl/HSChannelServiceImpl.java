@@ -6,6 +6,7 @@ import com.springboot.model.hssocket.HsMsg;
 import com.springboot.model.hssocket.resp.Resp2007;
 import com.springboot.service.hengshui.HSChannelService;
 import com.springboot.service.pay.HSBankPayService;
+import com.springboot.service.route.RouteService;
 import com.springboot.util.XmlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,19 @@ public class HSChannelServiceImpl implements HSChannelService, IBaseController {
     private static String stringFormat = "%08d";
     @Autowired
     HSBankPayService hsbankPayService;
-
+    @Autowired
+    RouteService routeService;
     @Override
     public String handle(String reqxml) throws UnsupportedEncodingException {
         String respXml = "";
         try {
             HsMsg hsMsg = (HsMsg) XmlUtil.xmlToBean2(reqxml, HsMsg.class);
             String serviceId = hsMsg.getServiceId();
-            /*if ("2001".equals(serviceId)) {
-                respXml = userService.registerForHsBank(reqxml);
-            } else if ("2002".equals(serviceId)) {
+            if ("2001".equals(serviceId)) {
+                //respXml = userService.registerForHsBank(reqxml);
+
+                respXml= routeService.process(reqxml);
+            }/* else if ("2002".equals(serviceId)) {
                 respXml = iProductService.queryForHsBank(reqxml);
             } else if ("2003".equals(serviceId)) {
                 respXml = iProductService.queryItemForHsBank(reqxml);

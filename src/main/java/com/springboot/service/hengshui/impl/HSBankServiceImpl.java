@@ -9,7 +9,6 @@ import com.springboot.model.hsbank.resp.RespBody;
 import com.springboot.model.hsbank.resp.RespMsg;
 import com.springboot.model.hssocket.req.Req2004;
 import com.springboot.model.hssocket.req.Req2006;
-import com.springboot.model.hssocket.req.Req2007;
 import com.springboot.model.pay.PayStatus;
 import com.springboot.service.hengshui.HSBankService;
 import com.springboot.util.TcpUtil;
@@ -21,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @version 创建时间：2018年5月8日 下午1:52:58
+ *
  * 账号业务类
  */
 @Transactional

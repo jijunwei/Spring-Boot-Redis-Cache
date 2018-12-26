@@ -117,11 +117,12 @@ public class DataSourceConfiguration {
         return datasource;
     }
 
-    /**
+/**
      * 事务管理
      * @return
-     * @throws SQLException
-     */
+     * @throws SQLException*/
+
+
     @Bean(name = "insureTransactionManager")
     public PlatformTransactionManager transactionManager() throws SQLException {
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();

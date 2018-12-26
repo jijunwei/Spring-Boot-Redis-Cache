@@ -1,3 +1,4 @@
+/*
 package com.springboot.config.shiro;
 
 import com.springboot.model.auth.JwtFilter;
@@ -20,12 +21,14 @@ import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /**
  * shiro配置
  *
  * @author skyer
  * @date 2018/8/21 16:27
- */
+ *//*
+
 @Configuration
 public class ShiroConfig {
     final static Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
@@ -84,3 +87,4 @@ public class ShiroConfig {
         return advisor;
     }
 }
+*/

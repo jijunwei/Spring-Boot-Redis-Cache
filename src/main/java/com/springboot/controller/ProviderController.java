@@ -2,11 +2,9 @@ package com.springboot.controller;
 
 
 import com.springboot.config.redis.RedisConfig;
-import com.springboot.service.*;
-import com.springboot.service.provider.MyListener;
+import com.springboot.service.pubsub.MyListener;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
