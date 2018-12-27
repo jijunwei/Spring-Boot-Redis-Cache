@@ -6,3 +6,5 @@ pub/sub
 queue listener
 
 集成mongodb,rabbitmq
+
+mybatis mapper
