@@ -1,6 +1,15 @@
 server:
   context-path: /web
   port: 8090
+socketServer:
+  port: 5000
+  IP: localhost
+destSocketServer:
+  port: 5001
+  IP: localhost
+ackSocketServer:
+  port: 4999
+  IP: localhost
 #vue静态资源
 vus.static.resources: /app/test/service/
 #首页图片静态资源配置
@@ -32,6 +41,7 @@ rabbitmq:
 #redisson.password=
 #redisson.sentinel-addresses=10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
 spring:
+  countDownLatch: 1
 #mongodb note:mongo3.x will not use host and port,only use uri
 
   data.mongodb.uri: mongodb://localhost:27017/test

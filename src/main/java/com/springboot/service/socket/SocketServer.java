@@ -1,29 +1,31 @@
 package com.springboot.service.socket;
 
 
-import ch.qos.logback.core.joran.spi.XMLUtil;
-import com.springboot.bean.Student;
-import com.springboot.model.route.RouteMsg;
-import com.springboot.service.StudentService;
-import com.springboot.service.hengshui.HSChannelService;
+/*import com.springboot.service.send.ACKTCPClientService;*/
 import com.springboot.service.route.RouteService;
+import com.springboot.util.JaXmlBeanUtil;
 import com.springboot.util.SpringUtil;
-import com.springboot.util.XmlUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * nio socket服务端
  */
+@Service
 public class SocketServer {
-
+    /*@Autowired
+    ACKTCPClientService acktcpClientService;*/
     // 日志
     private static final Logger LOGGER = LoggerFactory.getLogger(SocketServer.class);
 
@@ -57,22 +59,42 @@ public class SocketServer {
                         all = ArrayUtils.addAll(all,ArrayUtils.subarray(buff,0,len));
                     }
                     String reqxml = new String(all, "gbk");
-                    RouteService routeService=SpringUtil.getBean(RouteService.class);
+                    RouteService routeService = SpringUtil.getBean(RouteService.class);
+                    //本地处理
                     String result=routeService.process(reqxml);
 
-                    /*HSChannelService hsChannelService = SpringUtil.getBean(HSChannelService.class);
+                     if(reqxml.contains("<sourcemsg>")) {
+                         System.out.println("将收到的源消息放入队列");
+                         StringRedisTemplate template = SpringUtil.getBean(StringRedisTemplate.class);
+                         CountDownLatch latch = SpringUtil.getBean(CountDownLatch.class);
+                         template.convertAndSend("msg", reqxml);
+                         try {
+                             //发送消息连接等待中
+                             System.out.println("消息正在发送...");
 
-                    String respxml =  hsChannelService.handle(reqxml);*/
+                             latch.await();
+                         } catch (InterruptedException e) {
+                             System.out.println("消息发送失败...");
+                         }
+                     }
+                  /*   if(reqxml.contains("<ackMsg>")){
+                         LOGGER.info("bank process result in thirdPlatform:"+reqxml);
+                         try {
 
-                    socket.shutdownInput();//关闭输入流
-                    //获取输出流，响应客户端的请求
-                    os = socket.getOutputStream();
-                    //os.write(respxml.getBytes("gbk"));
+                             acktcpClientService.transportOut(reqxml);
+                         }catch (Exception e){
+                             LOGGER.error("银行处理完毕后回复场景平台出错，出错信息："+e.getMessage());
+                         }
+                     }*/
 
-                    os.write(result.getBytes("gbk"));
+                    byte[] bstream = result.getBytes("GBK");  //转化为字节流
+                    os = socket.getOutputStream();   //输出流
+                    os.write(bstream);
                     os.flush();//调用flush()方法将缓冲输出
+
+
                 } catch (IOException e) {
-                    LOGGER.error("",e);
+                    LOGGER.error(e.getMessage());
                 }finally{
                     //关闭资源
                     try {
@@ -82,9 +104,7 @@ public class SocketServer {
                         if(is!=null) {
                             is.close();
                         }
-                        if(socket!=null) {
-                            socket.close();
-                        }
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

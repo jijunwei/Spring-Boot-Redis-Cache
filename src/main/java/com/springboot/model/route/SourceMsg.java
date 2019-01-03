@@ -2,7 +2,6 @@ package com.springboot.model.route;
 
 import com.springboot.model.bean.XmlElementAnno;
 import lombok.Data;
-import org.apache.poi.ss.formula.functions.T;
 
 import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlElement;
@@ -10,62 +9,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
-
-@XmlRootElement(name = "routemsg")
-public class RouteMsg implements Serializable {
+@Data
+@XmlRootElement(name = "sourcemsg")
+public class SourceMsg implements Serializable {
     @XmlElement(name = "channelDate")
     @Column(name = "channelDate")
     @XmlElementAnno
-    /**
-     * 渠道交易日期,格式为 YYYYMMDD
-
-     */
+    //渠道交易日期,格式为 YYYYMMDD
     String channelDate;
-
-    /**
-     * 格式为 HHMMSSNNN
-     */
-
+    //渠道交易时间，格式为 HHMMSSNNN
     @Column(name = "channelTime")
     @XmlElement(name = "channelTime")
     @XmlElementAnno
     String channelTime;
-    /**
-     *  渠道流水号,表示渠道的唯一流水,前缀（T）+源系统标识号（7 位）+源系统交易日期（8 位：YYYYMMDD）+交易流水序号（12 位）
-     */
-
+    //渠道流水号,表示渠道的唯一流水,前缀（T）+源系统标识号（7 位）+源系统交易日期（8 位：YYYYMMDD）+交易流水序号（12 位）
     @XmlElement(name = "channelSeq")
     @Column(name = "channelSeq")
     @XmlElementAnno
     String channelSeq;
-
-    /**
-     * 渠道系统标识:合作方系统标识
-     */
-
+    //渠道系统标识:合作方系统标识
     @XmlElement(name = "channelCode")
     @Column(name = "channelCode")
     @XmlElementAnno
     String channelCode;
-
-    /**
-     * 平台标识
-     */
-
-    @XmlElement(name = "platformCode")
-    @Column(name = "platformCode")
-    @XmlElementAnno
-    String platformCode;
-
-    /**
-     * 资金方标识
-     */
-
-    @XmlElement(name = "destBankCode")
-    @Column(name = "destBankCode")
-    @XmlElementAnno
-    String destBankCode;
-
     @XmlElement(name = "msg")
     @Column(name = "msg")
     @XmlElementAnno
@@ -91,15 +57,6 @@ public class RouteMsg implements Serializable {
     public String getChannelSeq() {
         return channelSeq;
     }
-    @XmlTransient
-    public String getDestBankCode() {
-        return destBankCode;
-    }
-    @XmlTransient
-    public String getPlatformCode() {
-        return platformCode;
-    }
-
     public void setChannelDate(String channelDate){
         this.channelDate=channelDate;
     }
@@ -116,11 +73,5 @@ public class RouteMsg implements Serializable {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-    public void setDestBankCode(String destBankCode) {
-        this.destBankCode = destBankCode;
-    }
-    public void setPlatformCode(String platformCode) {
-        this.platformCode = platformCode;
     }
 }

@@ -1,7 +1,7 @@
 package com.springboot.test;
 
 
-import com.springboot.bean.JaBeanToXml;
+import com.springboot.model.bean.JaBeanToXml;
 import com.springboot.util.JaXmlBeanUtil;
 import org.junit.Test;
 

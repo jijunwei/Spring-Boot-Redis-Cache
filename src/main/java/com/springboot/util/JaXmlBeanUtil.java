@@ -1,6 +1,6 @@
 package com.springboot.util;
 
-import com.springboot.bean.XmlElementAnno;
+import com.springboot.model.bean.XmlElementAnno;
 import org.apache.commons.beanutils.BeanUtils;
 import org.jdom.Document;
 import org.jdom.Element;

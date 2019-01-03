@@ -3,13 +3,13 @@ package com.springboot.test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.Application;
-import com.springboot.bean.MyProps;
+import com.springboot.model.bean.MyProps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-import com.springboot.bean.Student;
+import com.springboot.model.bean.Student;
 import com.springboot.service.StudentService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

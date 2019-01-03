@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Spring-Boot-JointLendingScenario" />
         <module name="Spring-Boot-Redis-Cache" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="Spring-Boot-JointLendingScenario" target="1.8" />
       <module name="Spring-Boot-Redis-Cache" target="1.8" />
     </bytecodeTargetLevel>
   </component>

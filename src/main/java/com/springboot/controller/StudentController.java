@@ -1,6 +1,6 @@
 package com.springboot.controller;
 
-import com.springboot.bean.Student;
+import com.springboot.model.bean.Student;
 import com.springboot.model.RedisModel;
 import com.springboot.service.IRedisService;
 import com.springboot.service.StudentService;

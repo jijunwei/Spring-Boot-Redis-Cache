@@ -3,7 +3,7 @@ package com.springboot.mapper;
 import org.apache.ibatis.annotations.*;
 import org.springframework.cache.annotation.CacheConfig;
 
-import com.springboot.bean.Student;
+import com.springboot.model.bean.Student;
 
 @Mapper
 @CacheConfig(cacheNames = "student")

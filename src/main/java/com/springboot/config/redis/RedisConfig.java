@@ -94,6 +94,8 @@ public class RedisConfig extends CachingConfigurerSupport {
     private String sentinel3Host;
     @Value("${spring.redis.sentinel3.port}")
     private int sentinel3port;
+    @Value("${spring.countDownLatch}")
+    private int latch;
     @Autowired
     private RedisProperties redisProperties;
     public JedisPool jedisPool;
@@ -123,14 +125,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         cacheManager.setDefaultExpiration(10000);
         return cacheManager;
     }
-
+/*
     @Bean
     public RedisTemplate<String,String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);
         setSerializer(template);// 设置序列化工具
         template.afterPropertiesSet();
         return template;
-    }
+    }*/
     @Bean
     public RedisTemplate<String, Object> redisTemplate2(RedisConnectionFactory redisConnectionFactory)
     {
@@ -161,11 +163,11 @@ public class RedisConfig extends CachingConfigurerSupport {
     //必要的redis消息队列连接工厂
     @Bean
     CountDownLatch latch() {
-        return new CountDownLatch(1);
+        return new CountDownLatch(latch);
     }
 
     //redis模板
-    @Bean
+    @Bean("stringRedisTemplate")
     StringRedisTemplate template(RedisConnectionFactory connectionFactory) {
         return new StringRedisTemplate(connectionFactory);
     }

@@ -5,7 +5,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
-import com.springboot.bean.Student;
+import com.springboot.model.bean.Student;
 
 @CacheConfig(cacheNames = "student")
 public interface StudentService {
@@ -17,6 +17,6 @@ public interface StudentService {
 	
 	@Cacheable(key = "#p0")
 	Student queryStudentBySno(String sno);
-	@Cacheable(key="#p0")
+	@CachePut(key="#p0")
 	int add(Student student);
 }

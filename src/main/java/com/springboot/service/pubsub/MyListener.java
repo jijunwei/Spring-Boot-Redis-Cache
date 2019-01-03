@@ -1,6 +1,6 @@
 package com.springboot.service.pubsub;
 
-import com.springboot.bean.Student;
+import com.springboot.model.bean.Student;
 import com.springboot.service.StudentService;
 import com.springboot.util.SpringUtil;
 import com.springboot.util.XmlUtil;
