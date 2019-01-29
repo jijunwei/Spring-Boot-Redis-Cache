@@ -369,11 +369,7 @@
 
 	</dependencies>
 <repositories>
-        <repository>
-            <id>public-nexus</id>
-            <name>public nexus</name>
-            <url>http://10.29.30.22:8081/nexus/content/groups/public</url>
-        </repository>
+       
         <repository>
             <id>nexus-aliyun</id>
             <name>Nexus aliyun</name>
