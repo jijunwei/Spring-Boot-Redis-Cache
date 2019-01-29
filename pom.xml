@@ -368,7 +368,8 @@
 		</dependency>
 
 	</dependencies>
-      <repositories>
+      <distributionManagement> 
+	<repositories>
        
         <repository>
             <id>nexus-aliyun</id>
@@ -381,7 +382,8 @@
             <url>http://www.mvnrepository.com/</url>
         </repository>
 	</repositories>
-	<build>
+	</distributionManagement>
+	      <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
