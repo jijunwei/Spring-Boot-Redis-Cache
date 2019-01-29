@@ -368,7 +368,23 @@
 		</dependency>
 
 	</dependencies>
-
+<repositories>
+        <repository>
+            <id>public-nexus</id>
+            <name>public nexus</name>
+            <url>http://10.29.30.22:8081/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>mvnrepository</id>
+            <name>mvnrepository</name>
+            <url>http://www.mvnrepository.com/</url>
+        </repository>
+    </repositories
 	<build>
 		<plugins>
 			<plugin>
